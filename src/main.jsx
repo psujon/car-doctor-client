@@ -11,6 +11,10 @@ import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import AuthProvider from './Provider/AuthProvider';
 import Login from './Pages/Login';
+import Checkout from './Pages/Checkout';
+import BookServices from './Pages/BookServices';
+import Bookings from './Pages/Bookings';
+import PrivateRoutes from './Provider/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +32,15 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup></Signup>
+      },
+      {
+        path: '/book/:id',
+        element: <BookServices></BookServices>,
+        loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+      },
+      {
+        path: '/bookings',
+        element: <PrivateRoutes><Bookings></Bookings></PrivateRoutes>   
       }
     ]
   },

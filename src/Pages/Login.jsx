@@ -51,7 +51,7 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input type="submit" value="Login" />
+                                    <input type="submit" value="Login" className="btn btn-warning"/>
                                 </div>
                             </form>
                             <p className="text-center">New to Car Doctors? <Link to={`/signup`}>Sign Up</Link></p>

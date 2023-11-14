@@ -1,12 +1,31 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.svg';
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(error => { console.log(error) })
+    }
     const navLinks = <>
-        <li><Link>Home</Link></li>       
-        <li><Link>About</Link></li>               
-        <li><Link to={`/login`}>Login</Link></li>               
-        <li><Link to={`/signup`}>Signup</Link></li>               
+        <li><Link to={`/`}>Home</Link></li>
+        <li><Link to={`/about`}>About</Link></li>
+        {
+            user?.email ? <>
+                <li><Link to={`/bookings`}>My Bookings</Link></li>
+                <li><Link onClick={handleLogout}>Logout</Link></li>
+            </>
+                :
+                <>
+
+                    <li><Link to={`/login`}>Login</Link></li>
+                    <li><Link to={`/signup`}>Signup</Link></li>
+                </>
+        }
     </>
     return (
         <div>
@@ -22,7 +41,7 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                    <img src={logo} alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const ServiceCard = ({ service }) => {
@@ -10,10 +11,10 @@ const ServiceCard = ({ service }) => {
                 </figure>
                 <div className="card-body items-center">
                     <h2 className="card-title">{title}</h2>                    
-                    
-                    <div className="card-actions">
-                        <h2 className="card-title text-orange-600">Price: ${price}</h2>
-                        <button className="btn btn-primary">Get Service</button>
+                    <br />
+                    <div className="card-actions flex flex-row items-center justify-center">
+                        <h2 className="card-title text-3xl text-orange-600 mr-5">Price: ${price}</h2>
+                        <Link to={`/book/${_id}`}><button className="btn btn-primary">Book Now</button></Link>
                     </div>
                 </div>
             </div>
